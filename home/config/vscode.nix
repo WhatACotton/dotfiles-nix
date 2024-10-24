@@ -111,6 +111,7 @@
       "github.copilot.enable" = {
         "*" = "true";
       };
+      "remote.SSH.useLocalServer"= "false";
     };
   };
 }
