@@ -147,7 +147,7 @@
     shell = "/run/current-system/sw/bin/zsh";
   };
   # Add users to vboxusers group
-  users.extraGroups.vboxusers.members = [ "hello" ];
+  users.extraGroups.vboxusers.members = [ "cotton" ];
 
   # Enable flatpak
   services.flatpak.enable = true;
