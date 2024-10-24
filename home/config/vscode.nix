@@ -100,7 +100,8 @@
       "[prisma]" = {
         "editor.defaultFormatter" = "Prisma.prisma";
       };
-      "workbench.iconTheme" = "material-icon-theme";
+      "workbench.colorTheme" = "Tokyo Night";
+      "workbench.iconTheme" = "catppuccin-mocha";
       "terminal.integrated.commandsToSkipShell" = ["language-julia.interrupt"];
       "julia.symbolCacheDownload" = "true";
       "julia.enableTelemetry" =  "true";
