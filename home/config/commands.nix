@@ -11,9 +11,5 @@
     procs
     tldr
     delta
-    # ネタコマンド
-    lolcat
-    sl
-    cowsay
   ];
 }
