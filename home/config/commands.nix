@@ -11,5 +11,8 @@
     procs
     tldr
     delta
+    parted
+    gparted
+
   ];
 }
