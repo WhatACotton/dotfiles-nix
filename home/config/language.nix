@@ -12,8 +12,6 @@
     nodePackages.wrangler
     # python
     python3
-    # R
-    R
     # Rust
     rustup
     pkg-config

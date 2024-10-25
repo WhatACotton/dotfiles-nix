@@ -13,9 +13,6 @@
     delta
     parted
     gparted
-    # ネタコマンド
-    lolcat
-    sl
-    cowsay
+
   ];
 }
