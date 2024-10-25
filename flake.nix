@@ -19,12 +19,12 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #plasma-manager
-    # plasma-manager = {
-    #   url = "github:pjones/plasma-manager";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.home-manager.follows = "home-manager";
-    # };
+    # plasma-manager
+    plasma-manager = {
+      url = "github:pjones/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs = inputs: {
@@ -46,18 +46,6 @@
           ./home/home.nix
           inputs.nixvim.homeManagerModules.nixvim
           inputs.plasma-manager.homeManagerModules.plasma-manager
-        ];
-      };
-    };
-    ## configuration.nix ##
-    # nixosConfigurations.hostname
-    # Replace nixos with your hostname
-    nixosConfigurations = {
-      nixos = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux"; #sysytem arch param
-        # NixOSシステム構成が定義されているモジュールのリスト
-        modules = [
-          ./nixos/configuration.nix
         ];
       };
     };
