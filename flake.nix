@@ -49,5 +49,17 @@
         ];
       };
     };
+     ## configuration.nix ##
+    # nixosConfigurations.hostname
+    # Replace nixos with your hostname
+    nixosConfigurations = {
+      nixos = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux"; #sysytem arch param
+        # NixOSシステム構成が定義されているモジュールのリスト
+        modules = [
+          ./nixos/configuration.nix
+        ];
+      };
+    };
   };
 }
