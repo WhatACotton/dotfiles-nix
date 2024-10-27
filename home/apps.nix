@@ -10,6 +10,7 @@
     ./config/vscode.nix
     ./config/mpv.nix
     ./config/kde.nix
+    ./config/ssh.nix
   ];
   # Install pkgs
   home.packages = with pkgs; [
@@ -51,5 +52,8 @@
 
     #make
     gnumake
+
+    nixpkgs-fmt
+    mozcdic-ut-edict2
   ];
 }
