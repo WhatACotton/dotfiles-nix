@@ -112,6 +112,9 @@
         "*" = "true";
       };
       "remote.SSH.useLocalServer"= "false";
+       "[nix]"= {
+    "editor.defaultFormatter"= "jnoortheen.nix-ide";
+       };
     };
   };
 }
