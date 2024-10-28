@@ -55,5 +55,12 @@
 
     nixpkgs-fmt
     mozcdic-ut-edict2
+
+    zip
+
+    remmina
+    libvncserver
+
+    fritzing
   ];
 }
