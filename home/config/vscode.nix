@@ -88,7 +88,7 @@
         "rust" = "html";
       };
       #astroの設定
-      "prettier.documentSelectors" = ["**/*.astro"];
+      "prettier.documentSelectors" = [ "**/*.astro" ];
       "[astro]" = {
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
       };
@@ -102,19 +102,24 @@
       };
       "workbench.colorTheme" = "Tokyo Night";
       "workbench.iconTheme" = "catppuccin-mocha";
-      "terminal.integrated.commandsToSkipShell" = ["language-julia.interrupt"];
+      "terminal.integrated.commandsToSkipShell" = [ "language-julia.interrupt" ];
       "julia.symbolCacheDownload" = "true";
-      "julia.enableTelemetry" =  "true";
+      "julia.enableTelemetry" = "true";
       "editor.minimap.enabled" = "false";
       "prisma.showPrismaDataPlatformNotification" = "false";
       "material-ui-snippets.showNotesOnStartup" = "false";
       "github.copilot.enable" = {
         "*" = "true";
       };
-      "remote.SSH.useLocalServer"= "false";
-       "[nix]"= {
-    "editor.defaultFormatter"= "jnoortheen.nix-ide";
-       };
+      "remote.SSH.useLocalServer" = "false";
+      "[nix]" = {
+        "editor.defaultFormatter" = "jnoortheen.nix-ide";
+      };
+      "remote.SSH.remotePlatform" = {
+        "cotton-workstation-revive" = "linux";
+        "cotton-desktop" = "linux";
+      };
+
     };
   };
 }
