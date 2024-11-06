@@ -39,8 +39,8 @@ This dotfiles describes almost everything in nix except AstroNvim. This dotfiles
 | diff                    | `delta --side-by-side`                                                   |
 | neofetch                | `fastfetch`                                                              |
 | hn (for NixOS user)     | `cd /etc/nixos && nix run home-manager -- switch --flake .#myHomeConfig` |
-| hm (for not NixOs user) | `home-manager switch`                                                    |
-| nr (for NixOs user)     | `sudo nixos-rebuild switch`                                              |
+| hm (for not NixOS user) | `home-manager switch`                                                    |
+| nr (for NixOS user)     | `sudo nixos-rebuild switch`                                              |
 | hs                      | `firefox https://home-manager-options.extranix.com`                      |
 | ns                      | `firefox https://search.nixos.org`                                       |
 | gc                      | `nix-collect-garbage`                                                    |
@@ -106,6 +106,8 @@ OK
 OK
 > enable_network 0
 OK
+...
+(omitted)
 > quit
 ```
 
@@ -170,7 +172,7 @@ Setup dotfiles
 ```shell
 nix-env -i git
 cd /mnt/etc
-git clone https://github.com/Myxogastria0808/dotfiles.git
+git clone --recursive https://github.com/Myxogastria0808/dotfiles.git
 # Delete the original nixos directory.
 rm -rf /etc/nixos
 ln -s dotfiles/ nixos/
@@ -182,19 +184,54 @@ cf: This dotfiles's initial user password is `sakura`
 
 cf: This dotfiles's user name is `hello`
 
+editing `configuration.nix` following
+
 ```shell
 nano /mnt/etc/nixos/nixos/configuration.nix
 ```
 
-editing `configuration.nix` following
+```
+(omitted)
+...
+  users.users.<username> = {
+    ...
+    (omitted)
+    ...
+    # Genarate following commacnd: mkpasswd -m sha-512
+    initialHashedPassword="<hashed password>";
+    ...
+    (omitted)
+    ...
+  };
+...
+(omitted)
+```
+
+editing `home.nix` following
+
+```shell
+nano /mnt/etc/nixos/home/home.nix
+```
 
 ```
-users.users.<username> = {
-  ...
-  # Genarate following commacnd: mkpasswd -m sha-512
-  initialHashedPassword="<hashed password>";
-  ...
-};
+{ pkgs, ... }: {
+  imports = [
+    ./apps.nix
+  ];
+  home = rec {
+    username="<username>";
+    homeDirectory = "/home/${username}";
+    stateVersion = "24.05";
+  };
+  # Enable home-manager
+  programs.home-manager.enable = true;
+  nixpkgs = {
+    config = {
+      # Enable install unfree pkgs
+      allowUnfree = true;
+    };
+  };
+}
 ```
 
 Install NixOS
@@ -212,23 +249,88 @@ reboot now
 
 ### 4. Setup about home-manager
 
-set github username and email
+run folowing commands
+
+```shell
+cd /etc/nixos
+nix run home-manager -- switch --flake .#myHomeConfig
+```
+
+reboot
+
+```shell
+sudo reboot now
+```
+
+move dotfiles (entity of dotfiles)
+
+```shell
+sudo mv /etc/dotfiles ~/
+```
+
+repost symbolic link of /etc/nixos
+
+```shell
+cd etc
+sudo rm nixos
+sudo ln -s nixos ~/dotfiles
+```
+
+set other symbolic link
+
+```shell
+sudo ln -s /etc/nixos/home $HOME/.config/home-manager
+sudo ln -s /etc/nixos/home/config/zsh/oh-my-zsh $HOME/.config/oh-my-zsh
+```
+
+login github
+
+```shell
+gh auth login
+```
+
+editing `git.nix` following
+
+```shell
+nano /mnt/etc/nixos/home/config/git.nix
+```
 
 ```
-{
+{ pkgs, ... }: {
+  home.packages = with pkgs; [
+    gh
+  ];
   programs.git = {
     enable = true;
-    userName = "<GitHub username>";
-    userEmail = "<GitHub user email>";
-    ...
+    userName = "<github username>";
+    userEmail = "<github email>";
+    extraConfig = {
+      init.defaultBranch = "main";
+      credential."https://github.com".helper = "!gh auth git-credential";
+    };
   };
 }
 ```
 
-if your environment have ~/.zshrc, you have to remove this file before run folowing commands.
+run `tailscale up`
+
+> [!WARNING]
+> If you are not tailscale user, you have to comment out `services.tailscale.enable = true;` (`configuration.nix`)
 
 ```shell
-sh /etc/nixos/home/scripts/install-hm-nixos.sh
+sudo tailscale up
+```
+
+run folowing command
+
+```shell
+hn
+```
+
+reboot
+
+```shell
+sudo reboot now
 ```
 
 ### 5. Finish!
