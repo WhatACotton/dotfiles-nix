@@ -33,6 +33,7 @@
     texlive.combined.scheme-full
     # Typst
     typst
+    typst-lsp
 
     # Font
     _0xproto
@@ -62,5 +63,11 @@
     libvncserver
 
     fritzing
+
+    steam
+    spectacle
+
+    distrobox
+    kdePackages.krohnkite
   ];
 }
