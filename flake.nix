@@ -8,13 +8,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # default nixvim
-    # nixvim = {
-    #   url = "github:nix-community/nixvim";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # nixvim
     # GitHub:https://github.com/dc-tec/nixvim
-    nixvim.url = "github:dc-tec/nixvim";
+    # nixvim.url = "github:dc-tec/nixvim";
     # nix-vscode-extentions
     # nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     # rust
@@ -23,11 +23,7 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
-    #nixvim
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
     # plasma-manager
     plasma-manager = {
       url = "github:pjones/plasma-manager";
@@ -53,12 +49,12 @@
         };
         modules = [
           ./home/home.nix
-          # inputs.nixvim.homeManagerModules.nixvim
-          # inputs.plasma-manager.homeManagerModules.plasma-manager
+          inputs.nixvim.homeManagerModules.nixvim
+          inputs.plasma-manager.homeManagerModules.plasma-manager
         ];
       };
     };
-     ## configuration.nix ##
+    ## configuration.nix ##
     # nixosConfigurations.hostname
     # Replace nixos with your hostname
     nixosConfigurations = {
