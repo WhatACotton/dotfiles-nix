@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, userName, ... }:
 {
   programs.vscode = {
     enable = true;
@@ -119,7 +119,7 @@
         "cotton-workstation-revive" = "linux";
         "cotton-desktop" = "linux";
       };
-      "typst-lsp.serverPath" = "/home/cotton/.nix-profile/bin/typst-lsp";
+      "typst-lsp.serverPath" = "/home/${userName}/.nix-profile/bin/typst-lsp";
 
     };
   };

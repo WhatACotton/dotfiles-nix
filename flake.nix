@@ -22,8 +22,6 @@
     #   url = "github:oxalica/rust-overlay";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-
-
     # plasma-manager
     plasma-manager = {
       url = "github:pjones/plasma-manager";
@@ -46,6 +44,7 @@
         };
         extraSpecialArgs = {
           inherit inputs;
+          userName = "cotton";
         };
         modules = [
           ./home/home.nix
