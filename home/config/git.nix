@@ -9,6 +9,10 @@
     extraConfig = {
       init.defaultBranch = "main";
       credential."https://github.com".helper = "!gh auth git-credential";
+      status = {
+        short = true;
+      };
     };
+
   };
 }
