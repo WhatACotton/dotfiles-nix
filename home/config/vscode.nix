@@ -119,6 +119,7 @@
         "cotton-workstation-revive" = "linux";
         "cotton-desktop" = "linux";
       };
+      "typst-lsp.serverPath" = "/home/cotton/.nix-profile/bin/typst-lsp";
 
     };
   };
