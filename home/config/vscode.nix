@@ -120,7 +120,14 @@
         "cotton-desktop" = "linux";
       };
       "typst-lsp.serverPath" = "/home/${userName}/.nix-profile/bin/typst-lsp";
+      "files.associations" = {
+        "*.ino" = "arduino";
 
+      };
+      "arduino.useArduinoCli" = true;
+      "[cpp]" = {
+        "editor.defaultFormatter" = "ms-vscode.cpptools";
+      };
     };
   };
 }

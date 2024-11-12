@@ -3,7 +3,7 @@
     ./apps.nix
   ];
   home = rec {
-    username="cotton";
+    username = "${username}";
     homeDirectory = "/home/${username}";
     stateVersion = "24.05";
   };

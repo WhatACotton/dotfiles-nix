@@ -69,5 +69,7 @@
 
     distrobox
     kdePackages.krohnkite
+    texlivePackages.haranoaji
+    midicsv
   ];
 }
